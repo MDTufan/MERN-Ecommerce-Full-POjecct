@@ -1,6 +1,7 @@
 const express=require("express");
 const app=express();
 const morgan = require('morgan')
+const user = require('./Json/user.json')
 const port=3001;
 app.use(morgan("dev"));
 app.use(express.json());
@@ -22,6 +23,13 @@ app.get("/",(req,res)=>{
 app.get("/user",Islogin,(req,res)=>{
     console.log("tufan");
     res.status(200).send('Hello i an User page',
+    );
+});
+app.get("/api/user",(req,res)=>{
+    
+    res.status(200).send( user.map((data)=>{
+        data.id
+    })
     );
 });
 
